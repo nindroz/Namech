@@ -25,15 +25,16 @@ inquirer.prompt([
                 else if( stat.isDirectory() )
                     //console.log( "'%s' is a directory.", filePath );
                     if(filePath.includes(answers.oldName)){
-                        console.log(filePath.replace(answers.oldName,answers.newName))
-                        //console.log(path.join(answers.path,))
-                    //     fs.rename(filePath, path.join(answers.path,answers.newName), function(err) {
-                    //     if (err) {
-                    //       console.log(err)
-                    //     } else {
-                    //       console.log("Successfully renamed the directory.")
-                    //     }
-                    //   })
+                        console.log(path.join(answers.path,))
+                        //replaces old name with new in all directories
+                        const renamedPath = file.replace(answers.oldName,answers.newName)
+                        fs.rename(filePath, path.join(answers.path,renamedPath), function(err) {
+                        if (err) {
+                          console.log(err)
+                        } else {
+                          console.log("Successfully renamed the directory.")
+                        }
+                      })
                     }
                     
 
