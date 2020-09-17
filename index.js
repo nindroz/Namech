@@ -7,13 +7,6 @@ inquirer.prompt([
     { type: 'input', message:"old-name", name:"oldName"} ,{ type: 'input', message:"exact path to the directory", name:"path"}, {type:'input', message:"new-name", name:"newName"}
 ]).then(answers => {
     console.log(answers);
-    // fs.rename(answers.path, answers.newName, function(err) {
-    //     if (err) {
-    //       console.log(err)
-    //     } else {
-    //       console.log("Successfully renamed the directory.")
-    //     }
-    //   })
     (async ()=>{
         // Our starting point
         try {
@@ -23,24 +16,26 @@ inquirer.prompt([
             // Loop them all with the new for...of
             for( const file of files ) {
                 // Get the full paths
-                const fromPath = path.join( answers.path, file );    
+                const filePath = path.join( answers.path, file );    
                 // Stat the file to see if we have a file or dir
-                const stat = await fs.promises.stat( fromPath ).catch(e => {console.log(e);});
+                const stat = await fs.promises.stat( filePath ).catch(e => {console.log(e);});
                 if( stat.isFile() )
-                    //console.log( "'%s' is a file.", fromPath );
+                    //console.log( "'%s' is a file.", filePath );
                     console.log()
                 else if( stat.isDirectory() )
-                    //console.log( "'%s' is a directory.", fromPath );
-                    if(fromPath.includes(answers.oldName)){
-                        console.log(fromPath)
-                    }
-                    // fs.rename(fromPath, path.join(answers.path,answers.newName), function(err) {
+                    //console.log( "'%s' is a directory.", filePath );
+                    if(filePath.includes(answers.oldName)){
+                        console.log(filePath.replace(answers.oldName,answers.newName))
+                        //console.log(path.join(answers.path,))
+                    //     fs.rename(filePath, path.join(answers.path,answers.newName), function(err) {
                     //     if (err) {
                     //       console.log(err)
                     //     } else {
                     //       console.log("Successfully renamed the directory.")
                     //     }
                     //   })
+                    }
+                    
 
             }
         }
