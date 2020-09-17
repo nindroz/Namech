@@ -19,13 +19,26 @@ inquirer.prompt([
                 const filePath = path.join( answers.path, file );    
                 // Stat the file to see if we have a file or dir
                 const stat = await fs.promises.stat( filePath ).catch(e => {console.log(e);});
-                if( stat.isFile() )
-                    //console.log( "'%s' is a file.", filePath );
-                    console.log()
+                if( stat.isFile() ){
+                    console.log( "'%s' is a file.", filePath );
+                    if(filePath.includes(answers.oldName)){
+                        console.log(filePath)
+                        if(filePath.includes(answers.oldName)){
+                            //replaces old name with new in all directories
+                            const renamedPath = file.replace(answers.oldName,answers.newName)
+                            fs.rename(filePath, path.join(answers.path,renamedPath), function(err) {
+                            if (err) {
+                              console.log(err)
+                            } else {
+                              console.log("Successfully renamed the directory.")
+                            }
+                          })
+                        }
+                    }
+                }
                 else if( stat.isDirectory() )
                     //console.log( "'%s' is a directory.", filePath );
                     if(filePath.includes(answers.oldName)){
-                        console.log(path.join(answers.path,))
                         //replaces old name with new in all directories
                         const renamedPath = file.replace(answers.oldName,answers.newName)
                         fs.rename(filePath, path.join(answers.path,renamedPath), function(err) {
