@@ -7,8 +7,7 @@ inquirer
   .prompt([
     { type: "input", message: "old-name", name: "oldName" },
     { type: "input", message: "new-name", name: "newName" },
-    { type: "input", message: "exact path to the directory", name: "path" }
-    
+    { type: "input", message: "relative path to the directory", name: "path" },
   ])
   .then((answers) => {
     (async () => {
@@ -34,6 +33,15 @@ inquirer
         // Catch anything bad that happens
         console.error("We've thrown! Whoops!", e);
       }
+
+      //changes name of main directory
+      fs.rename(
+        answers.path,
+        answers.path.replace(answers.oldName, answers.newName),
+        (err) => {
+          if (err) console.log(err);
+        }
+      );
     })(); // Wrap in parenthesis and call now
   })
   .catch((e) => {
