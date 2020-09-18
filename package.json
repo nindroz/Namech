@@ -1,18 +1,24 @@
 {
-  "name": "NameChaing",
+  "name": "namech",
   "version": "1.0.0",
-  "description": "a node-cli tool so you can change the name of any project at any time. Will change all file names and references to the old name to the new ond",
+  "description": "simple cli to change project names easily",
   "main": "index.js",
+  "bin":"index.js",
   "scripts": {
     "start": "node index.js"
   },
+  "keywords": [
+    "namchanger",
+    "namech",
+    "change",
+    "changer"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/nindroz/NameChaing.git"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Nindroz",
+  "license": "MIT",
   "bugs": {
     "url": "https://github.com/nindroz/NameChaing/issues"
   },
