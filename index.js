@@ -5,8 +5,9 @@ const path = require("path");
 inquirer
   .prompt([
     { type: "input", message: "old-name", name: "oldName" },
-    { type: "input", message: "exact path to the directory", name: "path" },
     { type: "input", message: "new-name", name: "newName" },
+    { type: "input", message: "exact path to the directory", name: "path" }
+    
   ])
   .then((answers) => {
     (async () => {
