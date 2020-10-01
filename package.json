@@ -3,7 +3,7 @@
   "version": "1.0.2",
   "description": "simple cli to change project names easily",
   "main": "index.js",
-  "bin":"index.js",
+  "bin": "index.js",
   "scripts": {
     "start": "node index.js"
   },

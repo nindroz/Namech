@@ -25,7 +25,7 @@ inquirer
             //replaces old name with new in all directories
             const renamedPath = file.replace(answers.oldName, answers.newName);
             fs.rename(filePath, path.join(answers.path, renamedPath), (err) => {
-              if(err) console.log(err);
+              if (err) console.log(err);
             });
           }
         }
@@ -35,9 +35,9 @@ inquirer
       }
 
       //changes name of main directory
-      fs.rename(answers.path,answers.newName, err => {
-        if(err) console.log(err);
-      })
+      fs.rename(answers.path, answers.newName, (err) => {
+        if (err) console.log(err);
+      });
     })(); // Wrap in parenthesis and call now
   })
   .catch((e) => {
