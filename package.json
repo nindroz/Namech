@@ -8,10 +8,13 @@
     "start": "node index.js"
   },
   "keywords": [
-    "namchanger",
+    "name changer",
     "namech",
     "change",
-    "changer"
+    "changer",
+    "directory name",
+    "project",
+    "software"
   ],
   "repository": {
     "type": "git",
